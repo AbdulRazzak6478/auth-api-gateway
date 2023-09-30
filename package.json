@@ -1,7 +1,7 @@
 {
-  "name": "basic_node_config",
+  "name": "Auth_Api_Gateway",
   "version": "1.0.0",
-  "description": "basic node config practices",
+  "description": "Authentication to flight service",
   "main": "index.js",
   "scripts": {
     "dev": "npx nodemon src/index.js"
