@@ -29,7 +29,7 @@ module.exports = (sequelize, DataTypes) => {
       type:DataTypes.STRING,
       allowNull:false,
       validate:{
-        len:[4,50]
+        len:[4,100]
       }
     } 
   }, {
