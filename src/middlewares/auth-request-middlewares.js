@@ -34,6 +34,10 @@ async function checkAuth(req, res, next){
         next();
       }
     }
+    else{
+      console.log('no headers2');
+      throw new AppError(['x-access-token , jwt token is missing'],StatusCodes.BAD_REQUEST)
+    }
   } catch (error) {
     return res.status(error.statusCode).json(error);
   }
