@@ -15,7 +15,7 @@ async function createUser(data)
         return user;
     } catch (error) {
         let explanation = [];
-        console.log("user service create error ,",error);
+        console.log("user service create error ,",error.message);
         if(error.name == 'TypeError')
         {
             console.log("inside error ",error);
@@ -29,7 +29,7 @@ async function createUser(data)
             console.log("inside service create error ",explanation);
             throw new AppError(explanation,StatusCodes.BAD_REQUEST)
         } 
-        throw new AppError('Cannot create a new user entry',StatusCodes.INTERNAL_SERVER_ERROR)
+        throw new AppError(`Cannot create a new user entry, ${error?.message} `,StatusCodes.INTERNAL_SERVER_ERROR)
     }
 }
 
