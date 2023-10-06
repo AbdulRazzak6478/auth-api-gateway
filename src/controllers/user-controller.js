@@ -30,8 +30,22 @@ async function signIn(req, res) {
     return res.status(error?.statusCode ? error.statusCode :StatusCodes.INTERNAL_SERVER_ERROR).json(ErrorResponse);
   }
 }
+async function addRoleToUser(req, res) {
+  try {
+    const user = await UserService.addRoletoUser({
+      id: req.body.id,
+      role: req.body.role,
+    });
+    SuccessResponse.data = user;
+    return res.status(StatusCodes.OK).json(SuccessResponse);
+  } catch (error) {
+    ErrorResponse.error = error;
+    return res.status(error?.statusCode ? error.statusCode :StatusCodes.INTERNAL_SERVER_ERROR).json(ErrorResponse);
+  }
+}
 
 module.exports = {
   signUp,
-  signIn
+  signIn,
+  addRoleToUser
 };
