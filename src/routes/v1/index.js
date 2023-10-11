@@ -12,4 +12,4 @@ router.get('/info/new',(req,res)=>{
     return res.json({msg:'router is setup'});
 })
 
-module.exports = router;
+module.exports = router; 
