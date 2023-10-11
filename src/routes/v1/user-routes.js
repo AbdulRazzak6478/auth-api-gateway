@@ -9,6 +9,10 @@ router.post('/signup',AuthRequestMiddlewares.validateAuthRequest,UserController.
 // api/v1/user/signin POST 
 router.post('/signin',AuthRequestMiddlewares.validateAuthRequest,UserController.signIn)
 
+
+// api/v1/user/:id POST 
+router.get('/:id',UserController.getUser);
+
 // api/v1/user/role POST 
 router.post('/role',AuthRequestMiddlewares.checkAuth,AuthRequestMiddlewares.isAdmin,UserController.addRoleToUser)
 

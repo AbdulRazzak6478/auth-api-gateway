@@ -130,10 +130,27 @@ async function isAdmin(id)
         throw new AppError(`Something went wrong , ${error?.message}`,error?.statusCode ? error.statusCode :StatusCodes.INTERNAL_SERVER_ERROR)
     }
 }
+
+async function get(id)
+{
+    try {
+        const user = await userRepository.get(id);
+        return user;
+    } catch (error) {
+        if(error.statusCode == StatusCodes.NOT_FOUND)
+        {
+            throw new AppError("The user you requested is not found",error.statusCode);
+        }
+        throw new AppError('Cannot fetch data of user',StatusCodes.INTERNAL_SERVER_ERROR)
+    }
+}
+
+
 module.exports = {
     signUp,
     signIn,
     isAuthenticated,
     addRoletoUser,
-    isAdmin
+    isAdmin,
+    get
 }
