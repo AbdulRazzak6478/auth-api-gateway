@@ -65,7 +65,7 @@ async function isAuthenticated(token)
     try {
         if(!token)
         {
-            throw new AppError('x-access-token : bearer token ,missing jwt token',StatusCodes.BAD_REQUEST);
+            throw new AppError('x-access-token : bearer-token ,missing jwt token',StatusCodes.BAD_REQUEST);
         }
         const response = Auth.verifyToken(token);
         const user = await userRepository.get(response.id);

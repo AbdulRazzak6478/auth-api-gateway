@@ -46,3 +46,68 @@ Lets take a look inside the `src` folder
  ```
  npm run dev
  ```
+
+
+# How to use Auth API-GATEWAY
+- SignUp
+- `http://localhost:3000/api/v1/user/signup/`
+```
+  User Need to signUp
+  /*
+    POST /user/signup/
+    body{
+      email : example@gmail.com
+      password :123456
+    }
+  */
+  body {
+      email: req.body.email,
+      password: req.body.password,
+    }
+```
+- password is encrypted and stored.
+- encryption is done by using bcrypt library.
+
+- SignIn
+- `http://localhost:3000/api/v1/user/signin/`
+```
+  User Need to signUp
+  /*
+    POST /user/signin/
+    body{
+      email : example@gmail.com
+      password :123456
+    }
+  */
+  body {
+      email: req.body.email,
+      password: req.body.password,
+    }
+```
+- JWT_TOKEN is send to client from the server to identify the user while accessing other service routes.
+
+- Enums is used to assign roles to user so that flight routes are secure to Proceed for delete or update from customer people 
+- `admin` role person can change the details and also assign roles to customer an all.
+
+Assign Role
+- `http://localhost:3000/api/v1/user/role`
+```
+  /*
+    POST /user/role
+    headers
+       'x-access-token'
+  */
+```
+- Based on that token is check and decoded to get the details and check user is exist or is authenticated .
+- After that is check for the role that has been assign to this user if the user role is `admin` the it can access to flights routes to change and update
+- and also to check if the user is admin or not if it is admin then it proceed to change the roles of other customer.
+```
+  POST /user/role
+  body { id : "customer_id", role :"customer or admin "}
+  body {
+      id: req.body.id,
+      role: req.body.role,
+    }
+```
+- based on the id of the customer is assign a role 
+- whoever are admin can change the roles .
