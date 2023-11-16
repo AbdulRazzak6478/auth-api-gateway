@@ -111,3 +111,7 @@ Assign Role
 ```
 - based on the id of the customer is assign a role 
 - whoever are admin can change the roles .
+
+- there is a api-gateway `reverse proxy` where the user after authentication can proceed to those routes 
+- Inter service communication is implemented using axios lib.
+- so that all routes and api's are secure and protected .
